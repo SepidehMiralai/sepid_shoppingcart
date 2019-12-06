@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
+  fixtures :ProductTest
+end
   # test "the truth" do
   #   assert true
   # end
@@ -12,7 +14,7 @@ class ProductTest < ActiveSupport::TestCase
     assert product.errors[:price].any? 
     assert product.errors[:image_url].any?
    end
-=end   
+   
 
  def new_product(image_url) 
   Product.new(title: "My furniture Title",
@@ -31,3 +33,4 @@ class ProductTest < ActiveSupport::TestCase
     assert new_product(name).invalid?, "#{name} shouldn't be valid"
     end 
 end
+=end

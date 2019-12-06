@@ -1,8 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-cherry chair:
-  title: cherry chair
-  description: cherry chair is beautiful
-  image_url: cherry.png
-  price: 100
+one:
+  title: MyString
+  description: MyText
+  image_url: MyString
+  price: 9.99
+
+two:
+  title: MyString 
+  description: MyText 
+  image_url: MyString 
+  price: 9.99
+
+mysofa:
+  title: My cherry Sofa
+  description: One of a kind cherry sofa to relax 
+                and enjoy your evening!
+  image_url: cherry.jpg
+  price: 100.99
 
