@@ -17,11 +17,11 @@
  #banner {
     position: relative;
     min-height: 40px;
-    background: #9c9;
+    background: rgb(151, 152, 238);
     padding: 10px;
     border-bottom: 2px solid;
     font: small-caps 40px/40px "Times New Roman", serif; 
-    color: #282;
+    color: rgb(88, 63, 231);
     text-align: center;
     img{
         position: absolute; 
@@ -54,7 +54,7 @@
 
  #side {
      padding: 1em 2em;
-     background: #141;
+     background: rgb(41, 19, 124);
     
      form, div {
         display: inline;
@@ -69,8 +69,8 @@
         color:      white;
 
         table {
-            border-top:     1px dotted#595;
-            border-bottom:  1px dotted#595; 
+            border-top:     1px dottedrgb(59, 131, 165);
+            border-bottom:  1px dottedrgb(60, 2, 167); 
             margin-bottom:  10px;
         }
      }
@@ -83,7 +83,7 @@
             list-style: none;        
 
             a {
-                color: #bfb;
+                color: rgb(187, 255, 235);
                 font-size: small; 
             }
          }
