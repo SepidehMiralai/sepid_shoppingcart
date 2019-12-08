@@ -7,4 +7,13 @@ class CreateLineItems < ActiveRecord::Migration[6.0]
       t.timestamps
     end
   end
+
+  def up
+    change_column_null :line_items, :order_id, true
+  end
+  
+  def down
+    change_column_null :line_items, :order_id, false
+  end
+
 end
