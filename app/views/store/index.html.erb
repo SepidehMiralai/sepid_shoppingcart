@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 <h1>Red Maple Catalog</h1>
+<h2>Welcome <%@current_user%></h2>
 <% cache @products do %>
     <% @products.each do |product| %>
         <% cache product do %>
@@ -14,6 +15,7 @@
                 <div class="price_line">
                     <span class="price"><%= product.price %></span> 
                     <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+                    <%= button_to 'Add to Wishlist', wishlists_path(product_id: product) %>
                 </div>
             </div>
         <% end %>

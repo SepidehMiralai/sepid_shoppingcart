@@ -10,26 +10,34 @@ class WishlistsController < ApplicationController
   # GET /wishlists/1
   # GET /wishlists/1.json
   def show
+    
   end
 
   # GET /wishlists/new
   def new
+    
     @wishlist = Wishlist.new
   end
 
   # GET /wishlists/1/edit
   def edit
+    @wishlist = Wishlist.find_by(id: params[:id])
+    @user = User.find_by_id(@wishlist.user_id)
   end
+  
 
   # POST /wishlists
   # POST /wishlists.json
   def create
+#    @user = User.find_by(id: params[:user_id])
     @wishlist = Wishlist.new(wishlist_params)
-
+    @wishlist.user = current_user
+    
     respond_to do |format|
       if @wishlist.save
-        format.html { redirect_to @wishlist, notice: 'Wishlist was successfully created.' }
+        format.html { redirect_to store_index_url }
         format.json { render :show, status: :created, location: @wishlist }
+#        format.js   { @current_item = @line_item }
       else
         format.html { render :new }
         format.json { render json: @wishlist.errors, status: :unprocessable_entity }
@@ -40,6 +48,8 @@ class WishlistsController < ApplicationController
   # PATCH/PUT /wishlists/1
   # PATCH/PUT /wishlists/1.json
   def update
+    @wishlist = Wishlist.find_by(id: params[:id])
+    @user = User.find_by_id(@wishlist.user_id)
     respond_to do |format|
       if @wishlist.update(wishlist_params)
         format.html { redirect_to @wishlist, notice: 'Wishlist was successfully updated.' }

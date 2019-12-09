@@ -2,7 +2,7 @@
   <% if wishlist.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(wishlist.errors.count, "error") %> prohibited this wishlist from being saved:</h2>
-
+        <h2> <%= current_user.name %> </h2>
       <ul>
         <% wishlist.errors.full_messages.each do |message| %>
           <li><%= message %></li>
