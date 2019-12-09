@@ -31,7 +31,10 @@ class WishlistsController < ApplicationController
   def create
 #    @user = User.find_by(id: params[:user_id])
     @wishlist = Wishlist.new(wishlist_params)
-    @wishlist.user = current_user
+#    @wishlist.user = current_user
+    @wishlist.user_id = current_user.id
+    @wishlist.name = current_product.title
+
     
     respond_to do |format|
       if @wishlist.save

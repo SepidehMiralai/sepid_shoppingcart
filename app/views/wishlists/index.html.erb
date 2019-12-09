@@ -11,15 +11,18 @@
 
   <tbody>
     <% @wishlists.each do |wishlist| %>
+      <% if (wishlist.user_id == @current_user.id) %>
       <tr>
+        <td><%= wishlist.name %> </td>
         <td><%= link_to 'Show', wishlist %></td>
         <td><%= link_to 'Edit', edit_wishlist_path(wishlist) %></td>
         <td><%= link_to 'Destroy', wishlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Wishlist', new_wishlist_path %>
+
