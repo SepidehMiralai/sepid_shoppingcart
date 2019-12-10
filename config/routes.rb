@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/index'
   resources :wishlists
   #get 'sessions/new'
   #get 'sessions/create'
