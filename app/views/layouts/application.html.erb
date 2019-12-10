@@ -21,12 +21,17 @@
           <%= render @cart %>
         <% end %>
       </div>
+    
 
     <% if session[:user_id] %> 
-    <%= button_to 'Logout', logout_path, method: :delete %> 
+
+      <ul>
+        <li><%= link_to 'Logout', logout_path, method: :delete %> </li>
+        <li><%= link_to 'Homepage', store_index_path %></li>
+      </ul>
     <% end %>
-      
-   </div>
+     </div> 
+   
    <div id="main">
     <%= yield %>
    </div>
