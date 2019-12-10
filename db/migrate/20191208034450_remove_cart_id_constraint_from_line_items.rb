@@ -1,5 +1,5 @@
-class RemoveCartIdConstraintFromOrder < ActiveRecord::Migration[6.0]
+class RemoveCartIdConstraintFromLineItems < ActiveRecord::Migration[6.0]
   def change
-    change_column_default(:line_items, :cart_id, false)
+    change_column_null(:line_items, :cart_id, true)  
   end
 end
