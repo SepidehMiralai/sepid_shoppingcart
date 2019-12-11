@@ -29,8 +29,13 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_url, notice: 'User #{@user.name} was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+#        if !current_user
+          format.html { redirect_to login_url}
+#        elsif current_user.name == 'admin'
+#          format.html { redirect_to users_url, notice: 'User #{@user.name} was successfully created.' }
+#          format.json { render :show, status: :created, location: @user }
+        
+        
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -67,6 +72,12 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  rescue_from 'User::Error' do |exception|
+    redirect_to users_url, notice: exception.message 
+  end
+  
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
