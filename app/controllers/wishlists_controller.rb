@@ -34,6 +34,7 @@ class WishlistsController < ApplicationController
 #    @wishlist.user = current_user
     @wishlist.user_id = current_user.id
     @wishlist.name = current_product.title
+    @wishlist.img_url = current_product.image_url
 
     
     respond_to do |format|
