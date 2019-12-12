@@ -4,7 +4,7 @@ class WishlistsController < ApplicationController
   # GET /wishlists
   # GET /wishlists.json
   def index
-    @wishlists = Wishlist.all
+    @wishlists = Wishlist.where(user_id: @current_user.id)
   end
 
   # GET /wishlists/1
@@ -21,7 +21,7 @@ class WishlistsController < ApplicationController
 
   # GET /wishlists/1/edit
   def edit
-    @wishlist = Wishlist.find_by(id: params[:id])
+#    @wishlist = Wishlist.find_by(id: params[:id])
     @user = User.find_by_id(@wishlist.user_id)
   end
   
@@ -52,7 +52,7 @@ class WishlistsController < ApplicationController
   # PATCH/PUT /wishlists/1
   # PATCH/PUT /wishlists/1.json
   def update
-    @wishlist = Wishlist.find_by(id: params[:id])
+#    @wishlist = Wishlist.find_by(id: params[:id])
     @user = User.find_by_id(@wishlist.user_id)
     respond_to do |format|
       if @wishlist.update(wishlist_params)
