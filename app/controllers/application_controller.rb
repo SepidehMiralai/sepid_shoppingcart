@@ -4,12 +4,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_product
   
 # ...
-def current_user    
-  @current_user = User.find_by(id: session[:user_id])  
+def current_user     
+  @current_user ||= User.find_by(id: session[:user_id]) 
 end
 
 def current_product    
-  @current_product = Product.find_by(id: params[:product_id])  
+  @current_product ||= Product.find_by(id: params[:product_id])  
 end
 
 protected
