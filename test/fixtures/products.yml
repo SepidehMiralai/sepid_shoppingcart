@@ -4,12 +4,12 @@
 one:
   title: MyString
   description: MyText
-  image_url: MyString
+  image_url: cherry.jpg
   price: 9.99
 two:
   title: MyString
   description: MyText
-  image_url: MyString
+  image_url: cherry.jpg
   price: 9.99
 mysofa:
   title:       My cherry Sofa

@@ -29,12 +29,11 @@ class WishlistsController < ApplicationController
   # POST /wishlists
   # POST /wishlists.json
   def create
-#    @user = User.find_by(id: params[:user_id])
     @wishlist = Wishlist.new(wishlist_params)
-#    @wishlist.user = current_user
     @wishlist.user_id = current_user.id
     @wishlist.name = current_product.title
     @wishlist.img_url = current_product.image_url
+    @wishlist.price = current_product.price
 
     
     respond_to do |format|

@@ -1,54 +1,64 @@
-require 'test_helper'
 
-class ProductTest < ActiveSupport::TestCase
-   test "product attributes must not be empty" do 
-    product = Product.new
-    assert product.invalid?
-    assert product.errors[:title].any?
-    assert product.errors[:description].any? 
-    assert product.errors[:price].any? 
-    assert product.errors[:image_url].any?
-   end
 
-   test "product price must be positive" do
-    product = Product.new(title: "My furniture name",
-    description: "yyy", image_url: "zzz.jpg")
-    product.price = -1
-    assert product.invalid?
-    assert_equal ["must be greater than or equal to 0.01"],
-    product.errors[:price]
-    product.price = 0
-    assert product.invalid?
-    assert_equal ["must be greater than or equal to 0.01"],
-    product.errors[:price]
-      product.price = 1
-      assert product.valid?
-    end
+require 'test_helper'
 
-    def new_product(image_url) Product.new(title: "My Furniture Name",
-                    description: "yyy", 
-                    price: 1, 
-                    image_url: image_url)
-    end
-      test "image url" do
-        ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg
-        http://a.b.c/x/y/z/fred.gif }
-        bad = %w{ fred.doc fred.gif/more fred.gif.more }
-        ok.each do |name|
-          assert new_product(name).valid?, "#{name} shouldn't be invalid" 
-        end
-        bad.each do |name|
-          assert new_product(name).invalid?, "#{name} shouldn't be valid"
-        end   
-      end
-      fixtures :products
-      test "product is not valid without a unique title" do 
-        product = Product.new(title:       products(:mysofa).title,
-                              description: "yyy", 
-                              price:       1, 
-                              image_url:   "fred.gif")
-        assert product.invalid?
-        assert_equal [I18n.translate("has already been taken")], 
-                     product.errors[:title] 
-      end
+class ProductsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @product = products(:one)
+    @update = {
+               title: 'my lovely sofa',
+               description: 'Get more comfy!',
+               image_url: 'cherry.jpg',
+               price: 19.95
+              }
+  end
+
+  test "should get index" do
+    get products_url
+    assert_response :success
+  end
+
+  test "should get new" do
+    get new_product_url
+    assert_response :success
+  end
+
+  test "should create product" do
+    assert_difference('Product.count') do
+      post products_url, params: { product: @update }
+    end
+
+    assert_redirected_to product_url(Product.last)
+  end
+
+  test "should show product" do
+    get product_url(@product)
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get edit_product_url(@product)
+    assert_response :success
+  end
+
+  test "should update product" do
+    patch product_url(@product), params: { product: @update }
+    assert_redirected_to product_url(@product)
+  end
+
+  test "can't delete product in cart" do
+    assert_difference('Product.count', 0) do
+      delete product_url(products(:two))
+    end
+
+    assert_redirected_to products_url
+  end
+
+  test "should destroy product" do
+    assert_difference('Product.count', -1) do
+      delete product_url(@product)
+    end
+
+    assert_redirected_to products_url
+  end
 end

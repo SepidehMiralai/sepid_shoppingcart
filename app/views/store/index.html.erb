@@ -16,7 +16,7 @@
                 <div class="price_line">
                     <span class="price"><%= product.price %></span> 
                     <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
-                    <%= button_to 'Add to Wishlist', wishlists_path(product_id: product) %>
+                    <%= button_to 'Add to Wishlist', wishlists_path(product_id: product), method: :post %>
                     
                 </div>
             </div>

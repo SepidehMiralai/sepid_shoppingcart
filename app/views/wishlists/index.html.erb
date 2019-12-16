@@ -12,9 +12,10 @@
   <tbody>
     <% @wishlists.each do |wishlist| %>
       <tr>
-        <td class = .wish_style><%= wishlist.name %> </td>
-        <td><%= image_tag(wishlist.img_url, class: 'list_image') %> </td>
-        <td><%= link_to 'Destroy', wishlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= wishlist.name %> </td>
+        <td><%= wishlist.price %> </td>
+        <td><%= image_tag(wishlist.img_url, alt: 'product Image', class: 'list_image') %></td>
+        <td><%= link_to 'Delete', wishlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>      
     <% end %>
   </tbody>

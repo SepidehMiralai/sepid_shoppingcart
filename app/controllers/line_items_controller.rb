@@ -36,7 +36,8 @@ class LineItemsController < ApplicationController
       if @line_item.save
         format.html { redirect_to store_index_url }
         format.json { render :show, status: :created, location: @line_item }
-        format.js   { @current_item = @line_item }
+        format.js
+#        format.js   { @current_item = @line_item }
       else
         format.html { render :new }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }

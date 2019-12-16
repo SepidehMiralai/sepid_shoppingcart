@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_182546) do
+ActiveRecord::Schema.define(version: 2019_12_14_190305) do
 
   create_table "carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_182546) do
     t.string "name"
     t.string "img_url"
     t.integer "product_id"
+    t.decimal "price", precision: 10
   end
 
   add_foreign_key "line_items", "carts"
